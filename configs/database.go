@@ -1,7 +1,8 @@
 package database
 
 import (
-	"TTU_CORE_PORTAL_GO/models"
+	"TTU_CORE_ERP_API/models"
+	"errors"
 	"fmt"
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
@@ -56,7 +57,7 @@ func Init() *gorm.DB {
 	})
 
 	if dbErr != nil {
-		panic("Failed to connect to database")
+		errors.New("error connecting to data")
 	}
 
 	DB = dbInstance

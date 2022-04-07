@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"TTU_CORE_PORTAL_GO/configs"
-	"TTU_CORE_PORTAL_GO/models"
+	"TTU_CORE_ERP_API/configs"
+	"TTU_CORE_ERP_API/models"
 	"fmt"
 	"gorm.io/gorm"
 	"gorm.io/gorm/clause"

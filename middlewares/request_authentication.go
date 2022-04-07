@@ -1,7 +1,7 @@
 package middlewares
 
 import (
-	"TTU_CORE_PORTAL_GO/helpers"
+	"TTU_CORE_ERP_API/helpers"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 	"os"

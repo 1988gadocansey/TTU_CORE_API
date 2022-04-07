@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"TTU_CORE_PORTAL_GO/data/dto"
-	"TTU_CORE_PORTAL_GO/models"
+	"TTU_CORE_ERP_API/data/dto"
+	"TTU_CORE_ERP_API/models"
 	"fmt"
 )
 

@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"TTU_CORE_PORTAL_GO/data/dto"
-	"TTU_CORE_PORTAL_GO/data/response"
-	"TTU_CORE_PORTAL_GO/services"
+	"TTU_CORE_ERP_API/data/dto"
+	"TTU_CORE_ERP_API/data/response"
+	"TTU_CORE_ERP_API/services"
 	"github.com/gofiber/fiber/v2"
 )
 

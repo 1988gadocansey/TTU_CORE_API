@@ -1,8 +1,8 @@
 package routes
 
 import (
-	"TTU_CORE_PORTAL_GO/controllers"
-	"TTU_CORE_PORTAL_GO/middlewares"
+	"TTU_CORE_ERP_API/controllers"
+	"TTU_CORE_ERP_API/middlewares"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/markbates/pkger"

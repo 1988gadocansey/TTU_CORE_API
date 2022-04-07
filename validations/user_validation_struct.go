@@ -1,8 +1,8 @@
 package validations
 
 import (
-	"TTU_CORE_PORTAL_GO/data/dto"
-	"TTU_CORE_PORTAL_GO/data/response"
+	"TTU_CORE_ERP_API/data/dto"
+	"TTU_CORE_ERP_API/data/response"
 	"github.com/go-playground/validator"
 )
 

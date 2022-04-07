@@ -1,9 +1,9 @@
 package main
 
 import (
-	"TTU_CORE_PORTAL_GO/configs"
-	"TTU_CORE_PORTAL_GO/repositories"
-	"TTU_CORE_PORTAL_GO/routes"
+	"TTU_CORE_ERP_API/configs"
+	"TTU_CORE_ERP_API/repositories"
+	"TTU_CORE_ERP_API/routes"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"

@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"TTU_CORE_PORTAL_GO/models"
-	"TTU_CORE_PORTAL_GO/repositories"
+	"TTU_CORE_ERP_API/models"
+	"TTU_CORE_ERP_API/repositories"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"net/http"

@@ -1,10 +1,10 @@
 package services
 
 import (
-	"TTU_CORE_PORTAL_GO/data/dto"
-	"TTU_CORE_PORTAL_GO/data/response"
-	"TTU_CORE_PORTAL_GO/repositories"
-	"TTU_CORE_PORTAL_GO/validations"
+	"TTU_CORE_ERP_API/data/dto"
+	"TTU_CORE_ERP_API/data/response"
+	"TTU_CORE_ERP_API/repositories"
+	"TTU_CORE_ERP_API/validations"
 	"encoding/json"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
@@ -35,7 +35,7 @@ func CreateUser(user *dto.User) response.DataResponse {
 	validations.UserStruct = user_data
 	// Validate
 	errors := validations.ValidateUserStruct()
-	if errors != nil {
+	if errors != "" {
 		response := response.DataResponse{
 			Status:  fiber.StatusNotAcceptable,
 			Message: "Input error",

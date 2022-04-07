@@ -1,0 +1,4 @@
+go get -u all -- update all packages
+
+go get -u ./... update all packages
+
