@@ -10,14 +10,14 @@ import (
 
 type FacultyRepository interface {
 	Save(faculty models.Faculty) (uint, error)
-	Update(level models.Faculty) error
-	Delete(level models.Faculty) error
+	Update(faculty models.Faculty) error
+	Delete(faculty models.Faculty) error
 	FindAll() []*models.Faculty
-	FindByID(LevelID uint) (*models.Faculty, error)
-	DeleteByID(LevelID uint) error
+	FindByID(faculty uint) (*models.Faculty, error)
+	DeleteByID(faculty uint) error
 	FindByName(name string) (*models.Faculty, error)
 	FindByField(fieldName, fieldValue string) (*models.Faculty, error)
-	UpdateSingleField(level models.Faculty, fieldName, fieldValue string) error
+	UpdateSingleField(faculty models.Faculty, fieldName, fieldValue string) error
 }
 type facultyDatabase struct {
 	connection *gorm.DB
@@ -32,10 +32,10 @@ func NewFacultyRepository() FacultyRepository {
 
 }
 
-func (db facultyDatabase) DeleteByID(levelID uint) error {
-	level := models.Level{}
-	level.ID = levelID
-	result := db.connection.Delete(&level)
+func (db facultyDatabase) DeleteByID(facultyId uint) error {
+	faculty := models.Faculty{}
+	faculty.ID = facultyId
+	result := db.connection.Delete(&faculty)
 	return result.Error
 }
 func (db facultyDatabase) Save(level models.Faculty) (uint, error) {

@@ -27,6 +27,18 @@ func Setup(app *fiber.App) {
 	levelGroup.Get("/:id", controllers.GetSingleLevel)
 	levelGroup.Post("/", controllers.AddNewLevel)
 
+	// Group Faculty related APIs
+	facultyGroup := v1.Group("/faculties")
+	facultyGroup.Get("/", controllers.GetAllFaculties)
+	facultyGroup.Get("/:id", controllers.GetFaculty)
+	facultyGroup.Post("/", controllers.AddNewFaculty)
+
+	// Group Department related APIs
+	departmentGroup := v1.Group("/departments")
+	departmentGroup.Get("/", controllers.GetAllDepartments)
+	departmentGroup.Get("/:id", controllers.GetDepartment)
+	departmentGroup.Post("/", controllers.AddNewDepartment)
+
 	// Group Student related APIs
 	studentGroup := v1.Group("/students")
 	studentGroup.Get("/", controllers.GetAllLStudent)

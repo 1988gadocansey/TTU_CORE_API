@@ -65,21 +65,15 @@ func Init() *gorm.DB {
 }
 
 func Migrate() error {
-	//DB.AutoMigrate(
-	//	&models.User{},&models.Level{},&models.Address{},
-	//)
+	DB.AutoMigrate(
+		&models.User{}, &models.Level{}, &models.Address{},
+	)
 
-	err = DB.AutoMigrate(&models.CompanyCategory{})
-	err = DB.AutoMigrate(&models.Company{})
-	//err = DB.AutoMigrate(&models.User{})
-
-	/*err = DB.AutoMigrate(&models.Faculty{})
+	err = DB.AutoMigrate(&models.Faculty{})
 	err = DB.AutoMigrate(&models.Department{})
 	err = DB.AutoMigrate(&models.Programme{})
-	err = DB.AutoMigrate(&models.Level{})
 	err = DB.AutoMigrate(&models.Student{})
 
-	err = DB.AutoMigrate(&models.Address{})*/
 	if err != nil {
 		return err
 	}

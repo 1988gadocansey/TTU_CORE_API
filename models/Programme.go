@@ -13,8 +13,8 @@ type Faculty struct {
 type Department struct {
 	Base
 	gorm.Model
-	Name      string  ` db:"Name" json:"Name" gorm:"uniqueIndex" validate:"required,Name"`
-	Code      byte    `db:"Code" json:"Code" gorm:"uniqueIndex" validate:"required,Code"`
+	Name      string  ` db:"Name" json:"Name" gorm:"uniqueIndex" validate:"required"`
+	Code      string  `db:"Code" json:"Code" gorm:"uniqueIndex" validate:"required"`
 	FacultyID uint    ` json:"FacultyID"`
 	Faculty   Faculty ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Faculty"`
 

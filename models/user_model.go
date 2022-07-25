@@ -15,8 +15,8 @@ type User struct {
 }
 
 func (u *User) AfterCreate(tx *gorm.DB) (err error) {
-	if u.ID == 1 {
-		tx.Model(u).Update("Role", 1)
-	}
+
+	tx.Model(u).Update("Role", 1)
+
 	return
 }

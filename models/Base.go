@@ -11,8 +11,8 @@ type Base struct {
 
 // BeforeCreate These functions are called before creating Base
 func (base *Base) BeforeCreate(db *gorm.DB) error {
-
-	base.Uuid = uuid.Must(uuid.NewV4())
+	id := uuid.Must(uuid.NewV4())
+	db.Model(base).Update("uuid", id)
 
 	return nil
 }
