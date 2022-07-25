@@ -35,7 +35,7 @@ func CreateUser(user *dto.User) response.DataResponse {
 	validations.UserStruct = user_data
 	// Validate
 	errors := validations.ValidateUserStruct()
-	if errors != "" {
+	if errors != nil {
 		response := response.DataResponse{
 			Status:  fiber.StatusNotAcceptable,
 			Message: "Input error",

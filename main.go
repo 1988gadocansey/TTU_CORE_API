@@ -4,10 +4,8 @@ import (
 	"TTU_CORE_ERP_API/configs"
 	"TTU_CORE_ERP_API/repositories"
 	"TTU_CORE_ERP_API/routes"
-
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
-	//"github.com/hojabri/backend/repository"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
