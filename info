@@ -2,3 +2,16 @@ go get -u all -- update all packages
 
 go get -u ./... update all packages
 
+type EventNames string
+
+const (
+    NEW_USER       EventNames = "NEW_USER"
+    DIRECT_MESSAGE EventNames = "DIRECT_MESSAGE"
+    DISCONNECT     EventNames = "DISCONNECT"
+)
+then change your struct to this:
+
+type ConnectionPayload struct {
+    EventName    EventNames  `json:"eventName"`
+    EventPayload interface{} `json:"eventPayload"`
+}
