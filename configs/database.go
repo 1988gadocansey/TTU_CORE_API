@@ -73,6 +73,7 @@ func Migrate() error {
 	err = DB.AutoMigrate(&models.Department{})
 	err = DB.AutoMigrate(&models.Programme{})
 	err = DB.AutoMigrate(&models.Student{})
+	err = DB.AutoMigrate(&models.StudentConstraint{})
 
 	if err != nil {
 		return err
