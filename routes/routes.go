@@ -39,6 +39,12 @@ func Setup(app *fiber.App) {
 	departmentGroup.Get("/:id", controllers.GetDepartment)
 	departmentGroup.Post("/", controllers.AddNewDepartment)
 
+	// Group Programme related APIs
+	programmeGroup := v1.Group("/programmes")
+	programmeGroup.Get("/", controllers.AllProgramme)
+	programmeGroup.Get("/:id", controllers.GetProgramme)
+	programmeGroup.Post("/", controllers.AddNewProgramme)
+
 	// Group Student related APIs
 	studentGroup := v1.Group("/students")
 	studentGroup.Get("/", controllers.GetAllLStudent)

@@ -25,9 +25,9 @@ type Department struct {
 type Programme struct {
 	Base
 	gorm.Model
-	Name         string `db:"Name" json:"Name" gorm:"uniqueIndex" validate:"required,Name"`
-	Slug         byte   `db:"Slug" json:"Slug" gorm:"uniqueIndex" validate:"required,Slug"`
-	DepartmentId uint
+	Name         string     `db:"Name" json:"Name" gorm:"uniqueIndex" validate:"required,Name"`
+	Slug         string     `db:"Slug" json:"Slug" gorm:"uniqueIndex" validate:"required,Slug"`
+	DepartmentId uint       ` json:"DepartmentId"`
 	Department   Department ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Department"`
 
 	Duration string ` db:"Duration" json:"Duration"  validate:"required,Duration"`
