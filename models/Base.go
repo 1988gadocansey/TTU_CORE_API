@@ -6,7 +6,8 @@ import (
 )
 
 type Base struct {
-	Uuid uuid.UUID `gorm:"type:char(36)" `
+	Uuid uuid.UUID `gorm:"primaryKey" gorm:"type:char(36)"`
+	//ID   uuid.UUID `db:"id" json:"id" validate:"required,uuid"`
 }
 
 // BeforeCreate These functions are called before creating Base
