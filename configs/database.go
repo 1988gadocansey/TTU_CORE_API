@@ -96,6 +96,7 @@ func Migrate() error {
 	err = DB.AutoMigrate(&models.GradingSystem{})
 	err = DB.AutoMigrate(&models.MountedCourse{})
 	err = DB.AutoMigrate(&models.AcademicRecord{})
+	err = DB.AutoMigrate(&models.Clearance{})
 	if err != nil {
 		return err
 	}

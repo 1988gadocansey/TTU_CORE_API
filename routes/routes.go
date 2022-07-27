@@ -32,6 +32,9 @@ func Setup(app *fiber.App) {
 	facultyGroup.Get("/", controllers.GetAllFaculties)
 	facultyGroup.Get("/:id", controllers.GetFaculty)
 	facultyGroup.Post("/", controllers.AddNewFaculty)
+	facultyGroup.Get("/download/excel", controllers.ExportToExcel)
+	facultyGroup.Get("/download/excel/chart", controllers.ExportChart)
+	facultyGroup.Get("/download/excel/chart/main", controllers.ExportChartMain)
 
 	// Group Department related APIs
 	departmentGroup := v1.Group("/departments")

@@ -5,13 +5,12 @@ import "gorm.io/gorm"
 type AcademicRecord struct {
 	Base
 	gorm.Model
-	MountedCourseID uint
+	MountedCourseID uint8
 	MountedCourse   MountedCourse ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"MountedCourse"`
-	StudentID       uint
+	StudentID       uint8
 	Student         Student ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Student"`
-	GradingID       uint
+	GradingID       uint8
 	Grading         GradingSystem ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Grading"`
-	GradeStatusID   uint
 	GradeStatus     GradeStatuses `json:"GradeStatus"`
 	Resit           bool          `json:"Resit"`
 	ResitStatus     ResitStatuses `json:"ResitStatus"`

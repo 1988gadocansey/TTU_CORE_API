@@ -15,7 +15,7 @@ type Payment struct {
 	Amount           float32 `db:"Amount" json:"Amount"  validate:"required, numeric"`
 	BankID           uint8
 	Bank             Bank ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Bank"`
-	PaymentProductID uint8
+	PaymentTypeID    uint8
 	PaymentType      PaymentProduct ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"PaymentType"`
 	TransactionId    string         `db:"TransactionId" json:"TransactionId" `
 	TransactionDate  time.Time      `db:"TransactionDate" json:"TransactionDate" `
@@ -23,7 +23,7 @@ type Payment struct {
 	ReceiptNo        string         `db:"ReceiptNo" json:"ReceiptNo" `
 	PaymentNarration string         `db:"PaymentNarration" json:"PaymentNarration" `
 	Verified         bool           `db:"Verified" json:"Verified" `
-	UserID           uint8
+	VerifiedByID     uint8
 	VerifiedBy       User `gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"VerifiedBy"`
 	CalenderID       uint8
 	Calender         Calender ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Calender"`

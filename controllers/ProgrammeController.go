@@ -26,6 +26,16 @@ func AllProgramme(c *fiber.Ctx) error {
 
 	return c.Status(resp.Code).JSON(resp)
 }
+
+// GetProgramme  func gets programmer by given ID or 404 error.
+// @Description Get Programme by given ID.
+// @Summary get Programme by given ID
+// @Tags Programme
+// @Accept json
+// @Produce json
+// @Param id path string true "Programme ID"
+// @Success 200 {object} models.Programme
+// @Router /v1/programmes/{id} [get]
 func GetProgramme(c *fiber.Ctx) error {
 	id, err := strconv.ParseUint(c.Params("id"), 10, 0)
 	if err != nil {
