@@ -24,7 +24,7 @@ func CreateUser(user *dto.User) response.DataResponse {
 	user_data := dto.User{
 		Name:       user.Name,
 		Email:      user.Email,
-		Password:   string(password),
+		Password:   password,
 		IsVerified: user.IsVerified,
 		Level:      user.Level,
 		Status:     user.Status,

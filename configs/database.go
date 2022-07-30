@@ -97,6 +97,22 @@ func Migrate() error {
 	err = DB.AutoMigrate(&models.MountedCourse{})
 	err = DB.AutoMigrate(&models.AcademicRecord{})
 	err = DB.AutoMigrate(&models.Clearance{})
+	err = DB.AutoMigrate(&models.Address{})
+	err = DB.AutoMigrate(&models.Addresse{})
+	err = DB.AutoMigrate(&models.Bill{})
+	err = DB.AutoMigrate(&models.Email{})
+	err = DB.AutoMigrate(&models.Language{})
+	err = DB.AutoMigrate(&models.Zone{})
+	err = DB.AutoMigrate(&models.LiaisonData{})
+	err = DB.AutoMigrate(&models.LiaisonSemesterOut{})
+	err = DB.AutoMigrate(&models.Permission{})
+	err = DB.AutoMigrate(&models.Protocol{})
+	err = DB.AutoMigrate(&models.QualityAssuranceQuestion{})
+	err = DB.AutoMigrate(&models.Role{})
+	err = DB.AutoMigrate(&models.Room{})
+	err = DB.AutoMigrate(&models.RoomAllocation{})
+	err = DB.AutoMigrate(&models.Rustication{})
+	err = DB.AutoMigrate(&models.Sms{})
 	if err != nil {
 		return err
 	}

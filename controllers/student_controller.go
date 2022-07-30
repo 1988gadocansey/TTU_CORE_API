@@ -15,6 +15,10 @@ func init() {
 	studentRepository = repositories.NewStudentRepository()
 }
 
+//db.Model(&user).Related(&emails)
+//// SELECT * FROM emails WHERE user_id = 111; // 111 is user's primary key
+//db.Model(&user).Related(&languages, "Languages")
+//// SELECT * FROM "languages" INNER JOIN "user_languages" ON "user_languages"."language_id" = "languages"."id" WHERE "user_languages"."user_id" = 111
 func GetAllLStudent(c *fiber.Ctx) error {
 	levels := levelRepository.FindAll()
 

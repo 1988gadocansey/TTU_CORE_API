@@ -16,7 +16,7 @@ type Department struct {
 	Name      string  ` db:"Name" json:"Name" gorm:"uniqueIndex" validate:"required"`
 	Code      string  `db:"Code" json:"Code" gorm:"uniqueIndex" validate:"required"`
 	FacultyID uint    ` json:"FacultyID"`
-	Faculty   Faculty ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Faculty"`
+	Faculty   Faculty ` gorm:"ForeignKey:FacultyID" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Faculty"`
 	// department has many programme
 	Programme []Programme `gorm:"ForeignKey:DepartmentID" json:"Programme" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
 }

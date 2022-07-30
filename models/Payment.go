@@ -19,6 +19,7 @@ type Payment struct {
 	PaymentType      PaymentProduct ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"PaymentType"`
 	TransactionId    string         `db:"TransactionId" json:"TransactionId" `
 	TransactionDate  time.Time      `db:"TransactionDate" json:"TransactionDate" `
+	BankDate         time.Time      `db:"BankDate" json:"BankDate" `
 	Source           PaymentSources `db:"Source" json:"Source"  validate:"required"`
 	ReceiptNo        string         `db:"ReceiptNo" json:"ReceiptNo" `
 	PaymentNarration string         `db:"PaymentNarration" json:"PaymentNarration" `

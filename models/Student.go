@@ -32,7 +32,7 @@ type Student struct {
 	Denomination         Denomination ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Denomination"`
 	FormerSchoolID       uint8
 	FormerSchool         FormerSchool ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"FormerSchool"`
-	Email                string       `db:"Email" json:"Email omitempty" validate:"required,email"`
+	Emails               []Email      `json:"emails"`
 	Section              Sections     `db:"Section" json:"Section"  validate:"required"`
 	GraduationGroup      string       `db:"GraduationGroup" json:"GraduationGroup"  validate:"required"`
 	GuardianName         string       `db:"GuardianName" json:"GuardianName"  validate:"required"`
@@ -55,9 +55,10 @@ type Student struct {
 	HallID               uint8
 	Hall                 Hall             ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Hall"`
 	ProgrammeID          uint8            ` json:"ProgrammeID"`
-	Programme            Programme        ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Programme"`
-	Address              []Address        `gorm:"ForeignKey:StudentID" json:"Address" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
-	Results              []AcademicRecord `gorm:"ForeignKey:StudentID" json:"Results" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
-	Disabilties          []Disability     `gorm:"ForeignKey:StudentID" json:"Disabilties" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
-	Payments             []Payment        `gorm:"ForeignKey:StudentID" json:"Payments" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
+	Languages            []Language       `gorm:"many2many:student_languages;"` //student has and belongs to many languages, use `student_languages` as join table
+	Programme            Programme        ` gorm:"many2many,constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Programme"`
+	Address              []Address        `gorm:"many2many,ForeignKey:StudentID" json:"Address" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
+	Results              []AcademicRecord `gorm:"many2many,ForeignKey:StudentID" json:"Results" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
+	Disabilities         []Disability     `gorm:"many2many,ForeignKey:StudentID" json:"Disabilities" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
+	Payments             []Payment        `gorm:"many2many,ForeignKey:StudentID" json:"Payments" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;"`
 }

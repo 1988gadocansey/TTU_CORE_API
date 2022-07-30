@@ -9,9 +9,9 @@ import (
 )
 
 type DepartmentRepository interface {
-	Save(faculty models.Department) (uint, error)
-	Update(faculty models.Department) error
-	Delete(faculty models.Department) error
+	Save(department models.Department) (uint, error)
+	Update(department models.Department) error
+	Delete(department models.Department) error
 	FindAll() []*models.Department
 	FindByID(department uint) (*models.Department, error)
 	DeleteByID(department uint) error

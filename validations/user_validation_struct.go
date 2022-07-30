@@ -4,6 +4,8 @@ import (
 	"TTU_CORE_ERP_API/data/dto"
 	"TTU_CORE_ERP_API/data/response"
 	"github.com/go-playground/validator"
+	"reflect"
+	_ "reflect"
 )
 
 var UserStruct dto.User
@@ -11,7 +13,7 @@ var UserStruct dto.User
 func ValidateUserStruct() response.ErrorStruct {
 	var return_errors response.ErrorStruct
 
-	if (dto.User{}) != UserStruct {
+	if !reflect.DeepEqual(dto.User{}, UserStruct) {
 		validate := validator.New()
 		err := validate.Struct(UserStruct)
 		if err != nil {
@@ -24,5 +26,6 @@ func ValidateUserStruct() response.ErrorStruct {
 			}
 		}
 	}
+
 	return return_errors
 }
