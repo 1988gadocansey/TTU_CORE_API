@@ -12,10 +12,10 @@ import (
 func main() {
 	app := fiber.New()
 	db := database.Init()
-	err := database.Migrate()
+	/*err := database.Migrate()
 	if err != nil {
 		return
-	}
+	}*/
 	repositories.DB = db
 	app.Use(cors.New(cors.Config{
 		AllowCredentials: true,

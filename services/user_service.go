@@ -17,22 +17,22 @@ import (
 
 func CreateUser(user *dto.User) response.DataResponse {
 	password, _ := bcrypt.GenerateFromPassword([]byte(user.Password), 14)
-	base_data := dto.BaseDto{
+	baseData := dto.BaseDto{
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
 	}
-	user_data := dto.User{
+	userData := dto.User{
 		Name:       user.Name,
 		Email:      user.Email,
 		Password:   password,
 		IsVerified: user.IsVerified,
 		Level:      user.Level,
 		Status:     user.Status,
-		BaseDto:    base_data,
+		BaseDto:    baseData,
 	}
 
 	// Set Validation Struct
-	validations.UserStruct = user_data
+	validations.UserStruct = userData
 	// Validate
 	errors := validations.ValidateUserStruct()
 	if errors != nil {
@@ -45,16 +45,16 @@ func CreateUser(user *dto.User) response.DataResponse {
 	}
 
 	// Handle repositories error
-	repository_response := repositories.CreateUser(user_data)
-	if repository_response != "OK" {
+	repositoryResponse := repositories.CreateUser(userData)
+	if repositoryResponse != "OK" {
 		response := response.DataResponse{
 			Status:  1062,
-			Message: repository_response,
+			Message: repositoryResponse,
 		}
 		return response
 	}
 
-	data, _ := json.Marshal(user_data)
+	data, _ := json.Marshal(userData)
 
 	response := response.DataResponse{
 		Status:  fiber.StatusOK,
@@ -65,8 +65,8 @@ func CreateUser(user *dto.User) response.DataResponse {
 }
 
 func AuthenticateUser(credentials map[string]string) response.DataResponse {
-	user_data := repositories.GetUserByEmail(credentials["email"])
-	if user_data.ID == 0 {
+	userData := repositories.GetUserByEmail(credentials["email"])
+	if userData.ID == 0 {
 		response := response.DataResponse{
 			Status:  fiber.StatusNotFound,
 			Message: "Account not found.",
@@ -74,7 +74,7 @@ func AuthenticateUser(credentials map[string]string) response.DataResponse {
 		return response
 	}
 
-	if err := bcrypt.CompareHashAndPassword([]byte(user_data.Password), []byte(credentials["password"])); err != nil {
+	if err := bcrypt.CompareHashAndPassword([]byte(userData.Password), []byte(credentials["password"])); err != nil {
 		response := response.DataResponse{
 			Status:  fiber.StatusNotFound,
 			Message: "Incorrect password.",
@@ -83,7 +83,7 @@ func AuthenticateUser(credentials map[string]string) response.DataResponse {
 	}
 
 	claims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.StandardClaims{
-		Issuer:    strconv.Itoa(int(user_data.ID)),
+		Issuer:    strconv.Itoa(int(userData.ID)),
 		ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
 	})
 

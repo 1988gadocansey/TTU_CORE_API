@@ -12,3 +12,18 @@ type Level struct {
 
 	Student []Student `gorm:"ForeignKey:LevelID" gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Students"`
 }
+
+func (level *Level) Count(db *gorm.DB) int64 {
+	var total int64
+	db.Model(&Level{}).Count(&total)
+
+	return total
+}
+
+func (level *Level) Take(db *gorm.DB, limit int, offset int) interface{} {
+	var levels []Level
+
+	db.Offset(offset).Limit(limit).Find(&level)
+
+	return levels
+}

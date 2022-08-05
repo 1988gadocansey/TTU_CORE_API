@@ -15,7 +15,7 @@ func init() {
 	studentRepository = repositories.NewStudentRepository()
 }
 
-//db.Model(&user).Related(&emails)
+// GetAllLStudent db.Model(&user).Related(&emails)
 //// SELECT * FROM emails WHERE user_id = 111; // 111 is user's primary key
 //db.Model(&user).Related(&languages, "Languages")
 //// SELECT * FROM "languages" INNER JOIN "user_languages" ON "user_languages"."language_id" = "languages"."id" WHERE "user_languages"."user_id" = 111
@@ -44,6 +44,7 @@ func GetSingleStudent(c *fiber.Ctx) error {
 		}
 
 		return c.Status(errorResp.Code).JSON(errorResp)
+
 	}
 
 	level, err := levelRepository.FindByID(uint(id))
@@ -81,6 +82,9 @@ func GetSingleStudent(c *fiber.Ctx) error {
 
 // AddNewStudent adds new level
 func AddNewStudent(c *fiber.Ctx) error {
+	// lets say we are using request dto
+	//students := &request.StudentRequest{}
+
 	student := &models.Student{}
 
 	err := c.BodyParser(student)

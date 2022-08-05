@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	database "TTU_CORE_ERP_API/configs"
+	"TTU_CORE_ERP_API/helpers"
 	"TTU_CORE_ERP_API/models"
 	"TTU_CORE_ERP_API/repositories"
 	"fmt"
@@ -17,7 +19,7 @@ func init() {
 
 // GetAllLevel GetAllLevels gets all repository information
 func GetAllLevel(c *fiber.Ctx) error {
-	levels := levelRepository.FindAll()
+	/*levels := levelRepository.FindAll()
 
 	resp := models.Response{
 		Code:    http.StatusOK,
@@ -26,10 +28,23 @@ func GetAllLevel(c *fiber.Ctx) error {
 		Message: "All Level",
 	}
 
+	return c.Status(resp.Code).JSON(resp)*/
+	page, _ := strconv.Atoi(c.Query("page", "1"))
+
+	data := helpers.Paginate(database.DB, &models.Level{}, page)
+
+	resp := models.Response{
+		Code:    http.StatusOK,
+		Body:    data,
+		Title:   "GetAllLevel",
+		Message: "All Level",
+	}
+
 	return c.Status(resp.Code).JSON(resp)
+
 }
 
-// GetSingleCompany Gets single company information
+// GetSingleLevel GetSingleCompany Gets single company information
 func GetSingleLevel(c *fiber.Ctx) error {
 	id, err := strconv.ParseUint(c.Params("id"), 10, 0)
 
