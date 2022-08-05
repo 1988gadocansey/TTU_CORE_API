@@ -19,29 +19,10 @@ func init() {
 
 // GetAllLevel GetAllLevels gets all repository information
 func GetAllLevel(c *fiber.Ctx) error {
-	/*levels := levelRepository.FindAll()
 
-	resp := models.Response{
-		Code:    http.StatusOK,
-		Body:    levels,
-		Title:   "GetAllLevel",
-		Message: "All Level",
-	}
-
-	return c.Status(resp.Code).JSON(resp)*/
 	page, _ := strconv.Atoi(c.Query("page", "1"))
-
 	data := helpers.Paginate(database.DB, &models.Level{}, page)
-
-	resp := models.Response{
-		Code:    http.StatusOK,
-		Body:    data,
-		Title:   "GetAllLevel",
-		Message: "All Level",
-	}
-
-	return c.Status(resp.Code).JSON(resp)
-
+	return c.JSON(data)
 }
 
 // GetSingleLevel GetSingleCompany Gets single company information

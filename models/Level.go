@@ -23,7 +23,7 @@ func (level *Level) Count(db *gorm.DB) int64 {
 func (level *Level) Take(db *gorm.DB, limit int, offset int) interface{} {
 	var levels []Level
 
-	db.Offset(offset).Limit(limit).Find(&level)
+	db.Offset(offset).Limit(limit).Find(&levels)
 
 	return levels
 }
