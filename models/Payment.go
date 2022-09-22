@@ -28,4 +28,6 @@ type Payment struct {
 	VerifiedBy       User `gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"VerifiedBy"`
 	CalenderID       uint8
 	Calender         Calender ` gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"Calender"`
+	// the API user account that login to send the request
+	CreatedBy User `gorm:"constraint:onUpdate:CASCADE,onDelete: SET NULL;" json:"BankEntity"`
 }

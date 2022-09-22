@@ -14,15 +14,26 @@ type StudentRepository interface {
 	Update(student models.Student) error
 	Delete(student models.Student) error
 	FindAll() []*models.Student
-	FindByID(StudentID uint) (*models.Student, error)
+	FindByID(StudentId uint) (*models.Student, error)
 	FindByUUID(UUID uuid.UUID) (*models.Student, error)
-	DeleteByID(StudentID uint) error
-	FindByName(name string) (*models.Student, error)
+	FindByIndexNo(IndexNo string) (*models.Student, error)
+	FindByEmail(Email string) (*models.Student, error)
+	DeleteByID(StudentId uint) error
 	FindByField(fieldName, fieldValue string) (*models.Student, error)
 	UpdateSingleField(student models.Student, fieldName, fieldValue string) error
 }
 type studentDatabase struct {
 	connection *gorm.DB
+}
+
+func (db studentDatabase) FindByIndexNo(IndexNo string) (*models.Student, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (db studentDatabase) FindByEmail(Email string) (*models.Student, error) {
+	//TODO implement me
+	panic("implement me")
 }
 
 func NewStudentRepository() StudentRepository {
@@ -61,9 +72,9 @@ func (db studentDatabase) FindAll() []*models.Student {
 	return student
 }
 
-func (db studentDatabase) FindByID(studentID uint) (*models.Student, error) {
+func (db studentDatabase) FindByID(studentId uint) (*models.Student, error) {
 	var student models.Student
-	result := db.connection.Preload(clause.Associations).Find(&student, "id = ?", studentID)
+	result := db.connection.Preload(clause.Associations).Find(&student, "id = ?", studentId)
 
 	if result.Error != nil {
 		return nil, result.Error

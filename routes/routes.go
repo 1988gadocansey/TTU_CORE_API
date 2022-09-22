@@ -14,21 +14,21 @@ func Setup(app *fiber.App) {
 	/*
 	 * Version 1
 	 */
-	v1 := api.Group("/v1", middlewares.RequestAuthencation)
+	v3 := api.Group("/v3", middlewares.RequestAuthencation)
 
-	user := v1.Group("/user")
+	user := v3.Group("/user")
 	user.Post("/create", controllers.CreateUser)
 	user.Post("/login", controllers.AuthenticateUser)
 	user.Get("/:id", controllers.UserList)
 
 	// Group Level related APIs
-	levelGroup := v1.Group("/levels")
+	levelGroup := v3.Group("/levels")
 	levelGroup.Get("/", controllers.GetAllLevel)
 	levelGroup.Get("/:id", controllers.GetSingleLevel)
 	levelGroup.Post("/", controllers.AddNewLevel)
 
 	// Group Faculty related APIs
-	facultyGroup := v1.Group("/faculties")
+	facultyGroup := v3.Group("/faculties")
 	facultyGroup.Get("/", controllers.GetAllFaculties)
 	facultyGroup.Get("/:id", controllers.GetFaculty)
 	facultyGroup.Post("/", controllers.AddNewFaculty)
@@ -37,19 +37,25 @@ func Setup(app *fiber.App) {
 	facultyGroup.Get("/download/excel/chart/main", controllers.ExportChartMain)
 
 	// Group Department related APIs
-	departmentGroup := v1.Group("/departments")
+	departmentGroup := v3.Group("/departments")
 	departmentGroup.Get("/", controllers.GetAllDepartments)
 	departmentGroup.Get("/:id", controllers.GetDepartment)
 	departmentGroup.Post("/", controllers.AddNewDepartment)
 
 	// Group Programme related APIs
-	programmeGroup := v1.Group("/programmes")
+	programmeGroup := v3.Group("/programmes")
 	programmeGroup.Get("/", controllers.AllProgramme)
 	programmeGroup.Get("/:id", controllers.GetProgramme)
 	programmeGroup.Post("/", controllers.AddNewProgramme)
 
+	// Group Product related APIs
+	productGroup := v3.Group("/products")
+	productGroup.Get("/", controllers.GetAllProduct)
+	productGroup.Get("/:code", controllers.FindByCode)
+	productGroup.Post("/", controllers.CreateProduct)
+
 	// Group Student related APIs
-	studentGroup := v1.Group("/students")
+	studentGroup := v3.Group("/students")
 	studentGroup.Get("/", controllers.GetAllLStudent)
 	studentGroup.Get("/:id", controllers.GetSingleStudent)
 	studentGroup.Post("/", controllers.AddNewStudent)

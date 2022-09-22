@@ -68,7 +68,7 @@ func GetProgramme(c *fiber.Ctx) error {
 }
 
 /*
-	AddNewProgramme adds new programme object
+AddNewProgramme adds new programme object
 */
 func AddNewProgramme(c *fiber.Ctx) error {
 	programme := &models.Programme{}

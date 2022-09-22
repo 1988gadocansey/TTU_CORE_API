@@ -2,6 +2,7 @@ package controllers
 
 import (
 	database "TTU_CORE_ERP_API/configs"
+	"TTU_CORE_ERP_API/data/dto"
 	"TTU_CORE_ERP_API/helpers"
 	"TTU_CORE_ERP_API/models"
 	"TTU_CORE_ERP_API/repositories"
@@ -21,7 +22,7 @@ func init() {
 func GetAllLevel(c *fiber.Ctx) error {
 
 	page, _ := strconv.Atoi(c.Query("page", "1"))
-	data := helpers.Paginate(database.DB, &models.Level{}, page)
+	data := helpers.Paginate(database.DB, &dto.LevelDTO{}, page)
 	return c.JSON(data)
 }
 
@@ -64,8 +65,11 @@ func GetSingleLevel(c *fiber.Ctx) error {
 	}
 
 	resp := models.Response{
-		Code:    http.StatusOK,
-		Body:    level,
+		Code: http.StatusOK,
+		Body: dto.LevelDTO{
+			Name: level.Name,
+			Slug: level.Slug,
+		},
 		Title:   "OK",
 		Message: "Level information",
 	}
